@@ -6,6 +6,10 @@ orbs:
   ruby: circleci/ruby@1.4.1
   bundle-install: toshimaru/bundle-install@0.3.1
 
+dependencies:
+  pre:
+    - echo "export rvm_ignore_gemsets_flag=1" >> ~/.rvmrc - gem install bundler
+
 jobs:
   install-ruby:
     docker:
