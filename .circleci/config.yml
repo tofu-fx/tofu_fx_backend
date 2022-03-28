@@ -15,6 +15,12 @@ jobs:
     steps:
       - ruby/install:
           version: '2.7.2'
+  rspec-tests:
+    docker:
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
+      - ruby/rspec-test
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -22,3 +28,4 @@ workflows:
   build_and_test:
     jobs:
       - install-ruby
+      - rspec-tests
