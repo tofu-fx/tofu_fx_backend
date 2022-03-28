@@ -5,6 +5,10 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.4.1
 
+dependencies:
+  pre:
+    - echo "export rvm_ignore_gemsets_flag=1" >> ~/.rvmrc - gem install bundler
+
 jobs:
   install-ruby:
     docker:
@@ -18,8 +22,7 @@ jobs:
       # replace with your preferred image
       - image: cimg/base:stable
     steps:
-      - ruby/install-deps:
-          bundler-version: '2.1.4' 
+      - ruby/install-deps
 
 workflows:
   example-workflow:
