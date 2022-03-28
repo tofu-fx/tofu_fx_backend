@@ -35,4 +35,4 @@ workflows:
     jobs:
       - install-ruby
       - install-dependencies
-      - rspec-tests
+      # - rspec-tests
