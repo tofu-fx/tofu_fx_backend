@@ -19,6 +19,8 @@ jobs:
       - image: cimg/base:stable
     steps:
       - ruby/install-deps:
+          key: gems-v1 
+          with-cache: true 
           bundler-version: '2.1.4' 
 
 workflows:
