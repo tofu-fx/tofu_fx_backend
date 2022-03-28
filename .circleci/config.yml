@@ -4,23 +4,35 @@ version: 2.1
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+orbs:
+  ruby: circleci/ruby@1.4.1
+
 jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+  install-ruby:
     docker:
+      # replace with your preferred image
       - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+      - ruby/install:
+          version: '2.7.2'
+  install-dependencies:
+    docker:
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
+      - ruby/install-deps
+  rspec-tests:
+    docker:
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
+      - ruby/rspec-test
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  build_and_test:
     jobs:
-      - say-hello
+      - install-ruby
+      - install-dependencies
+      - rspec-tests
