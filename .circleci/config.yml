@@ -4,6 +4,7 @@ version: 2.1
 
 orbs:
   ruby: circleci/ruby@1.4.1
+  bundle: sandbox2/bundle@0.0.1
 
 jobs:
   install-ruby:
@@ -18,7 +19,7 @@ jobs:
       # replace with your preferred image
       - image: cimg/base:stable
     steps:
-      - ruby/install-deps
+      - bundle/bundle-install
 
 workflows:
   example-workflow:
