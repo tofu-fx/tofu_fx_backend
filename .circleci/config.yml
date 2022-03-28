@@ -21,7 +21,7 @@ jobs:
       # replace with your preferred image
       - image: cimg/base:stable
     steps:
-      - bundler/install
+      - ruby/install-deps
   rspec-tests:
     docker:
       # replace with your preferred image
