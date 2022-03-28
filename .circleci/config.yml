@@ -6,6 +6,7 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 orbs:
   ruby: circleci/ruby@1.4.1
+  bundle-install: toshimaru/bundle-install@0.3.1
 
 jobs:
   install-ruby:
@@ -15,12 +16,12 @@ jobs:
     steps:
       - ruby/install:
           version: '2.7.2'
-  install-dependencies:
+  bundle-install:
     docker:
       # replace with your preferred image
       - image: cimg/base:stable
     steps:
-      - ruby/install-deps
+      - bundle-install/bundle-install
   rspec-tests:
     docker:
       # replace with your preferred image
@@ -34,5 +35,5 @@ workflows:
   build_and_test:
     jobs:
       - install-ruby
-      - install-dependencies
+      - bundle-install
       - rspec-tests
