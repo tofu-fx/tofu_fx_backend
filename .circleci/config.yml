@@ -23,7 +23,7 @@ jobs:
       # replace with your preferred image
       - image: cimg/base:stable
     steps:
-      - bundle-install/bundle-install
+      - ruby/install-deps
 
 workflows:
   example-workflow:
