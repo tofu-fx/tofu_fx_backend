@@ -15,6 +15,12 @@ jobs:
     steps:
       - ruby/install:
           version: '2.7.2'
+  install-deps:
+    docker:
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
+      - ruby/install-deps
   rspec-tests:
     docker:
       # replace with your preferred image
@@ -28,4 +34,9 @@ workflows:
   build_and_test:
     jobs:
       - install-ruby
-      - rspec-tests
+      - install-deps:
+         requires:
+          - install-ruby
+      - rspec-tests:
+         requires:
+          - install-deps
