@@ -13,8 +13,18 @@ jobs:
     steps:
       - ruby/install:
           version: '2.7.5' 
+  install-deps:
+    docker:
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
+      - ruby/install-deps:
+          bundler-version: '2.1.4' 
 
 workflows:
   example-workflow:
     jobs:
       - install-ruby
+      - install-deps:
+          requires:
+          - install-ruby
