@@ -10,14 +10,13 @@ RSpec.describe 'Fetch All Image URLS' do
     get "/featured_work?api_key=#{ENV['api_key']}"
 
     images = JSON.parse(response.body, symbolize_names: true)
-
+    # binding.pry
     expect(images.keys).to eq([:data])
-    expect(images[:data].keys).to eq([:urls])
-    expect(images[:data][:urls]).to be_a(Array)
-    expect(images[:data][:urls].include?("https://url1")).to eq(true)
-    expect(images[:data][:urls].include?("https://url2")).to eq(true)
-    expect(images[:data][:urls].include?("https://url3")).to eq(true)
-    expect(images[:data][:urls].include?("https://google.com")).to eq(false)
+    expect(images[:data].keys).to eq([:featured_images])
+    expect(images[:data][:featured_images]).to be_a(Array)
+    expect(images[:data][:featured_images].first.keys).to eq([:id, :url])
+    expect(images[:data][:featured_images].first[:id]).to be_a(Integer)
+    expect(images[:data][:featured_images].first[:url]).to be_a(String)
   end
 
   it 'doesnt fetch images if api key is missing' do
