@@ -1,14 +1,9 @@
 class FeaturedImageSerializer
 
-  def self.index(images)
+  def self.index(image_urls)
     {
       "data": {
-        "featured_images": images.map do |image|
-          {
-            "id": image.id,
-            "url": image.url
-          }
-        end
+        "featured_images": image_urls
       }
     }
   end
