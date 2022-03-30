@@ -4,7 +4,7 @@ class FeaturedWorkController < ApplicationController
     if valid_api_key?(params[:api_key])
       spreadsheet_id = "1dezRYzkCZ8VrfsbO2EKVoF9D_hIHsKAF_BuI7b83phA"
       selection1 = "B2"
-      selection2 = "B30"
+      selection2 = "B11"
       # binding.pry
       featured_image_urls = GoogleSheetsFacade.get_sheet_data(spreadsheet_id, selection1, selection2).map do |row|
         row[0]
