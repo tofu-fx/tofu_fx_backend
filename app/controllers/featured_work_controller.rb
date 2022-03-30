@@ -9,6 +9,7 @@ class FeaturedWorkController < ApplicationController
       featured_image_urls = GoogleSheetsFacade.get_sheet_data(spreadsheet_id, selection1, selection2).map do |row|
         row[0]
       end
+      featured_image_urls = [] if featured_image_urls.nil?
 
       render json: FeaturedImageSerializer.index(featured_image_urls)
     else
