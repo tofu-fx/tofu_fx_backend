@@ -13,18 +13,18 @@ RSpec.describe 'About Me Blurp Endpoint' do
   it 'doesnt fetch about me blurb if api key is missing' do
     get "/about_me"
 
-    images = JSON.parse(response.body, symbolize_names: true)
+    about_me = JSON.parse(response.body, symbolize_names: true)
 
-    expect(images.keys).to eq([:errors])
-    expect(images[:errors]).to eq(["api_key param is either missing or invalid"])
+    expect(about_me.keys).to eq([:errors])
+    expect(about_me[:errors]).to eq(["api_key param is either missing or invalid"])
   end
 
   it 'doesnt fetch about me blurb if api key is invalid' do
     get "/about_me?api_key=invalid_api_key"
 
-    images = JSON.parse(response.body, symbolize_names: true)
+    about_me = JSON.parse(response.body, symbolize_names: true)
 
-    expect(images.keys).to eq([:errors])
-    expect(images[:errors]).to eq(["api_key param is either missing or invalid"])
+    expect(about_me.keys).to eq([:errors])
+    expect(about_me[:errors]).to eq(["api_key param is either missing or invalid"])
   end
 end
