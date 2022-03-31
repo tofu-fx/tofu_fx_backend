@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe GoogleSheetsService do
 
   describe 'self.conn' do
-    it 'creates a Faraday::Connection object' do
+    it 'creates a Faraday::Connection object', :vcr do
       expect(GoogleSheetsService.conn).to be_a(Faraday::Connection)
     end
   end
 
   describe 'self.get_sheet_data' do
-    it 'fetches sheet data' do
+    it 'fetches sheet data', :vcr do
       spreadsheet_id = "1dezRYzkCZ8VrfsbO2EKVoF9D_hIHsKAF_BuI7b83phA"
       selection1 = "B2"
       selection2 = "B30"
