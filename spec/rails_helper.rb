@@ -74,4 +74,7 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
+
+  config.filter_sensitive_data('<env: google_sheets_api_key>') { ENV['google_sheets_api_key'] }
+  config.filter_sensitive_data('<env: api_key>') { ENV['api_key'] }
 end
