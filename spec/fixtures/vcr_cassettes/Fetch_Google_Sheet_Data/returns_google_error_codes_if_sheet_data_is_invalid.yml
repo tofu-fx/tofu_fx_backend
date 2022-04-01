@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: 'https://sheets.googleapis.com/v4/spreadsheets/1dezRYzkCZ8VrfsbO2EKVoF9D_hIHsKAF_BuI7b83phA/values/B2:B2?key=<env:
+    uri: 'https://sheets.googleapis.com/v4/spreadsheets/--------/values/A1:E10?key=<env:
       google_sheets_api_key>'
     body:
       encoding: US-ASCII
@@ -16,17 +16,17 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
-      Content-Type:
-      - application/json; charset=UTF-8
       Vary:
       - Origin
       - Referer
       - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
       Date:
-      - Thu, 31 Mar 2022 20:12:51 GMT
+      - Fri, 01 Apr 2022 02:10:47 GMT
       Server:
       - ESF
       Cache-Control:
@@ -44,7 +44,13 @@ http_interactions:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        ewogICJyYW5nZSI6ICJTaGVldDEhQjIiLAogICJtYWpvckRpbWVuc2lvbiI6ICJST1dTIiwKICAidmFsdWVzIjogWwogICAgWwogICAgICAiSSBhbSBhIDE5IHllYXIgb2xkIEdyYXBoaWNzIERlc2lnbmVyIGZyb20gdGhlIFVuaXRlZCBTdGF0ZXMgdGhhdCdzIGJlZW4gZG9pbmcgZ3JhcGhpYyBkZXNpZ25pbmcgZm9yIG92ZXIgdHdvIHllYXJzIG5vdy4gSSBzcGVjaWFsaXplIGluIHNvY2lhbCBtZWRpYSBnYW1pbmcgYnJhbmRpbmcgYW5kIHN0cmVhbSBncmFwaGljcy4gSWYgeW914oCZcmUgaW50ZXJlc3RlZCBpbiBteSB3b3JrIGFuZCB3b3VsZCBsaWtlIHRvIGNvbW1pc3Npb24gbWUsIHNlbmQgYSBtZXNzYWdlIHRvIG9uZSBvZiBteSBzb2NpYWxzIGFib3ZlLiIKICAgIF0KICBdCn0K
-  recorded_at: Thu, 31 Mar 2022 20:12:51 GMT
+      string: |
+        {
+          "error": {
+            "code": 404,
+            "message": "Requested entity was not found.",
+            "status": "NOT_FOUND"
+          }
+        }
+  recorded_at: Fri, 01 Apr 2022 02:10:47 GMT
 recorded_with: VCR 6.1.0
